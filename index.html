@@ -546,7 +546,12 @@ html:not(.js) .split .w>span{transform:none}
   .repo,.proof-btn{height:44px;padding:2px 14px 0;font-size:11.5px}
   .title{font-size:min(calc(92 * var(--sc)),9.6vw)}
   .title small{font-size:max(9px,2.6vw);letter-spacing:.24em}
-  .title{top:calc(500 * var(--sc))}
+  .stage{background:linear-gradient(180deg,var(--hero) 0%,var(--hero) 38%,#173640 62%,var(--bg) 92%)}
+  .scene{--sc:calc(max(calc(var(--vw) / 1280), calc(var(--vh) / 800)) * var(--phone-zoom,.6));
+    top:calc(var(--vh) * .12);transform:translate(-50%,0) scale(calc(1 + var(--hs,0) * .12))}
+  .l-img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 9%,#000 70%,transparent 97%);mask-image:linear-gradient(180deg,transparent 0,#000 9%,#000 70%,transparent 97%)}
+  .fx-shade{background:none}
+  .title{top:calc(600 * var(--sc))}
   .copy--tl{display:none}
   .ringtext .core{inset:21%}
   .ringtext .core b{font-size:clamp(15px,4.6vw,24px)}
