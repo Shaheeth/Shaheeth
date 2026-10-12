@@ -28,7 +28,9 @@
 @supports (height:100dvh){:root{--vh:100dvh}}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);overflow-x:hidden}
+html,body{overflow-x:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body)}
 html.loading body{overflow:hidden}
 ::selection{background:var(--acid);color:var(--acid-ink)}
 a{color:inherit}
@@ -37,10 +39,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 @media (pointer:fine){html.js body,html.js a,html.js button{cursor:none}}
 
 /* ── grain + cursor-lit grid ── */
-.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.05;
+.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.05;background-size:160px 160px;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation:grain 1.2s steps(6) infinite}
-@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+@keyframes grain{0%{background-position:0 0}20%{background-position:-37px 21px}40%{background-position:23px -41px}60%{background-position:-19px -13px}80%{background-position:41px 33px}100%{background-position:0 0}}
 .gridbg{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:radial-gradient(rgba(236,241,238,.14) 1px,transparent 1.2px);background-size:28px 28px;
   -webkit-mask-image:radial-gradient(420px circle at var(--cx,50%) var(--cy,50%),#000 0%,transparent 70%);
@@ -166,7 +168,7 @@ html.loading .loader{display:flex}
 
 @media (orientation:portrait) and (min-width:561px){:root{--u:clamp(.72px, calc(var(--vw) / 860), 1.6px)}}
 @media (max-width:560px){
-  :root{--u:clamp(.72px, calc(var(--vw) / 470), 1px)}
+  :root{--u:clamp(.8px, calc(var(--vw) / 400), 1.05px)}
   .nav{left:calc(20 * var(--u));right:calc(20 * var(--u));width:auto;transform:none;top:calc(20 * var(--u))}
   .status{display:none}
   .copy--tl{left:calc(20 * var(--u));top:calc(96 * var(--u))}
@@ -219,7 +221,7 @@ html:not(.js) .split .w>span{transform:none}
 .mq-row.r2 span::after{background:transparent;border:1px solid var(--teal)}
 
 /* about */
-.about-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:28px}
+.about-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px}
 .fill{grid-column:1/span 8;font:500 clamp(24px,3vw,42px)/1.25 var(--body);letter-spacing:-0.02em}
 .fill .fw{opacity:.16;transition:opacity .35s,color .35s}
 .fill .fw.on{opacity:1}
@@ -236,7 +238,7 @@ html:not(.js) .split .w>span{transform:none}
 .stat p{font:500 11.5px/1.5 var(--mono);text-transform:uppercase;color:var(--dim);margin-top:14px;letter-spacing:.03em}
 
 /* experience */
-.xp{display:grid;grid-template-columns:repeat(12,1fr);gap:28px;align-items:start}
+.xp{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px;align-items:start}
 .xp-l{grid-column:1/span 5;position:sticky;top:120px}
 .xp-yr{font:800 clamp(80px,9.5vw,150px)/.8 var(--display);letter-spacing:-0.06em;color:transparent;-webkit-text-stroke:1.5px var(--line2)}
 .xp-l h3{font:700 clamp(26px,2.8vw,38px)/1.05 var(--display);letter-spacing:-0.02em;margin-top:28px}
@@ -321,7 +323,7 @@ html:not(.js) .split .w>span{transform:none}
 .v-wave .meta{display:flex;justify-content:space-between;margin-top:16px;font:500 10px/1.5 var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
 .v-wave .meta b{color:var(--acid);font-weight:500}
 /* vis: grid */
-.v-grid .cells{display:grid;grid-template-columns:repeat(12,1fr);gap:4px}
+.v-grid .cells{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px}
 .v-grid .cells i{aspect-ratio:1;background:rgba(236,241,238,.07);transition:background .3s}
 .v-grid .cells i.f{animation:cellf 3s ease-in-out infinite;animation-delay:var(--dl)}
 @keyframes cellf{0%,100%{background:rgba(236,241,238,.07)}40%,70%{background:var(--acid)}}
@@ -504,9 +506,9 @@ html:not(.js) .split .w>span{transform:none}
   .stats{grid-template-columns:repeat(2,1fr)}
   .stat{border-right:0;margin-right:0;border-bottom:1px solid var(--line);padding-bottom:24px}
   .xp-l,.xp-r{grid-column:1/-1;position:relative;top:0}
-  .pcard-in{grid-template-columns:1fr}
+  .pcard-in{grid-template-columns:minmax(0,1fr)}
   .p-vis{border-left:0;border-top:1px solid var(--line);min-height:300px;padding:40px 0}
-  .sk{grid-template-columns:1fr}
+  .sk{grid-template-columns:minmax(0,1fr)}
   .sk-tabs{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);scrollbar-width:none}
   .sk-tab{border-bottom:0;border-right:1px solid var(--line);white-space:nowrap;flex:none}
   .sk-tab::before{top:auto;height:2px;width:auto;right:0;transform:scaleX(0)}
@@ -514,7 +516,7 @@ html:not(.js) .split .w>span{transform:none}
   .certs{grid-template-columns:repeat(2,1fr)}
   .edu-row{grid-template-columns:120px 1fr}
   .edu-row .det{grid-column:2}
-  .mission{grid-template-columns:1fr}
+  .mission{grid-template-columns:minmax(0,1fr)}
   .clinks{grid-template-columns:repeat(2,1fr);column-gap:24px}
   .overlay{grid-template-columns:1fr;align-content:center}
   .overlay aside{display:none}
@@ -531,6 +533,45 @@ html:not(.js) .split .w>span{transform:none}
   .edu-row .det{grid-column:1}
   .hud{display:none}
   .term-body{font-size:12.5px}
+  .term-in input{font-size:16px}
+  .h2{font-size:clamp(28px,9.5vw,64px);letter-spacing:-0.04em}
+  .contact .h2{font-size:clamp(54px,17vw,100px)}
+  .p-info h3{font-size:clamp(20px,6.5vw,60px)}
+  .p-info{gap:18px;padding:24px 20px}
+  .p-top{font-size:11px}
+  .p-vis.media{padding:40px 0 48px}
+  .pv-win{width:calc(100% - 28px)}
+  .pv-play{padding:11px 14px 10px;font-size:11px;bottom:10px}
+  .p-foot{gap:10px}
+  .repo,.proof-btn{height:44px;padding:2px 14px 0;font-size:11.5px}
+  .title{font-size:min(calc(92 * var(--sc)),9.6vw)}
+  .title small{font-size:max(9px,2.6vw);letter-spacing:.24em}
+  .title{top:calc(500 * var(--sc))}
+  .copy--tl{display:none}
+  .ringtext .core{inset:21%}
+  .ringtext .core b{font-size:clamp(15px,4.6vw,24px)}
+  .ringtext .core span{font-size:9.5px}
+  .term-hints button{padding:14px 14px 13px}
+  .mail-hint a,.foot a{display:inline-block;padding:12px 0}
+  .p-vis .vlabel,.pv-bar{font-size:10.5px}
+  .copy--tr{top:calc(88 * var(--u))}
+  .reticle .tag{display:none}
+  .xp-r{padding-left:28px}
+  .xp-item::before{left:-32px}
+  .stat .num{font-size:clamp(48px,15vw,80px)}
+  .fill{font-size:clamp(21px,6vw,28px)}
+  .sk-panel{min-height:0;padding:22px 18px}
+  .sk-title{font-size:clamp(28px,9vw,44px);margin:20px 0 16px}
+  .sk-tab{padding:15px 16px}
+  .email{font-size:clamp(22px,7.4vw,40px)}
+  .lb{padding:14px 12px 18px}
+  .lb-nav{top:auto;bottom:16px;transform:none;width:42px;height:42px}
+  .lb-cap{padding:0 52px;font-size:13px}
+  .cert{min-height:0;padding:24px 22px}
+  .edu-row{padding:26px 0}
+  .mission-txt p{font-size:19px}
+  .overlay{padding:96px 20px 32px}
+  .overlay a{font-size:7vw;gap:14px;padding:12px 0}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
