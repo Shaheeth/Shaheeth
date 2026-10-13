@@ -459,16 +459,16 @@ html:not(.js) .split .w>span{transform:none}
 
 /* mission ring */
 .mission{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.ringtext{position:relative;width:min(560px,100%);aspect-ratio:1;margin:0 auto}
+.ringtext{position:relative;width:min(520px,100%);aspect-ratio:1;margin:0 auto;container-type:inline-size}
 .ringtext svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .ringtext text{font:600 13.2px var(--mono);letter-spacing:2.2px;fill:var(--ink);text-transform:uppercase}
-.ringtext .rot{transform-origin:250px 250px}
 .ringtext .rc{fill:none;stroke:var(--line2)}
 .ringtext .rc2{fill:none;stroke:var(--acid);stroke-dasharray:2 10}
-.ringtext .core{position:absolute;inset:30%;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,rgba(198,255,61,.14),transparent 70%)}
-.ringtext .core b{display:block;font:800 clamp(26px,3.2vw,44px)/.95 var(--display);text-transform:uppercase;letter-spacing:-0.03em}
+.ringtext .core{position:absolute;inset:24%;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,rgba(198,255,61,.14),transparent 70%)}
+.ringtext .core b{display:block;font:800 clamp(13px,3.9cqi,22px)/1 var(--display);text-transform:uppercase;letter-spacing:-0.03em}
 .ringtext .core span{font:500 10.5px/1 var(--mono);color:var(--acid);letter-spacing:.14em;display:block;margin-bottom:10px}
-.mission-txt p{font:500 clamp(20px,2.1vw,28px)/1.4 var(--body);letter-spacing:-0.015em}
+.mission-txt .h2{font-size:clamp(40px,5.2vw,84px)}
+.mission-txt p{font:500 clamp(18px,1.6vw,24px)/1.45 var(--body);letter-spacing:-0.015em}
 .mission-txt p+p{margin-top:22px;font-size:16px;color:var(--dim);font-family:var(--mono);text-transform:uppercase;letter-spacing:.02em;line-height:1.7}
 
 /* contact */
@@ -554,7 +554,9 @@ html:not(.js) .split .w>span{transform:none}
   .title{top:calc(600 * var(--sc))}
   .copy--tl{display:none}
   .ringtext .core{inset:21%}
-  .ringtext .core b{font-size:clamp(15px,4.6vw,24px)}
+  .ringtext .core b{font-size:clamp(13px,4.2vw,20px)}
+  .mission-txt .h2{font-size:clamp(28px,9.5vw,64px)}
+  .mission-txt{margin-top:28px}
   .ringtext .core span{font-size:9.5px}
   .term-hints button{padding:14px 14px 13px}
   .mail-hint a,.foot a{display:inline-block;padding:12px 0}
