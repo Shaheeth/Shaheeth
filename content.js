@@ -26,11 +26,11 @@ window.PORTFOLIO = {
      file         : image (.jpg/.png/.webp) or .pdf in assets/certs/
                     (optional → "View certificate")                  */
   certifications: [
-    { title: "Cyber Security & Ethical Hacking", issuer: "Boston Institute of Analytics", date: "", credentialId: "", verifyUrl: "", file: "" },
-    { title: "Ethical Hacking", issuer: "Cisco", date: "", credentialId: "", verifyUrl: "", file: "" },
-    { title: "AI Security Specialization", issuer: "Edureka", date: "", credentialId: "", verifyUrl: "", file: "" },
-    { title: "Google Cybersecurity Professional Certificate", issuer: "Google / Coursera", date: "", credentialId: "", verifyUrl: "", file: "" },
-    { title: "Google Cloud Cybersecurity Professional Certificate", issuer: "Google", date: "", credentialId: "", verifyUrl: "", file: "" },
+    { title: "Cyber Security & Ethical Hacking", issuer: "Boston Institute of Analytics", date: "Oct 2026", credentialId: "", verifyUrl: "", file: "assets/certs/cybersecurity and ethical hacking certificates.pdf" },
+    { title: "Ethical Hacking", issuer: "Cisco", date: "Oct 2026", credentialId: "", verifyUrl: "", file: "assets/certs/cybersecurity and ethical hacking certificates.pdf" },
+    { title: "AI Security Specialization", issuer: "Edureka", date: "Oct 2026", credentialId: "", verifyUrl: "", file: "assets/certs/Edureka Ai Security.pdf" },
+    { title: "Google Cybersecurity Professional Certificate", issuer: "Google / Coursera", date: "Sep 2026", credentialId: "", verifyUrl: "", file: "assets/certs/Foundations of Cybersecurity Google.pdf" },
+    { title: "Google Cloud Cybersecurity Professional Certificate", issuer: "Google", date: "Oct 2026", credentialId: "", verifyUrl: "", file: "assets/certs/Security Principles in Cloud Google.pdf" },
     { title: "Fundamentals of Cybersecurity", issuer: "Amypo", date: "", credentialId: "", verifyUrl: "", file: "" }
   ],
 
